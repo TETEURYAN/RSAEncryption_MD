@@ -16,14 +16,14 @@ long potencia(long long a, long long e, long long n);
 bool mdc (long long int a, long long int b) {
     while (b != 0)
     {
-       int r = a % b;
+       long long int r = a % b;
        a = b;
        b = r;
     }   
    return a == 1 ? true : false;
 }
 
-int euclides(int x, int y) {
+long long int euclides(int x, int y) {
 	int i, menor;
 
 	if (x<y) {
@@ -230,7 +230,8 @@ void entrada_descriptografia()
         long long int p = 0,q = 0,e = 0;
 
         entrada_numeros(&p, &q, &e);
-        long long int d = chave_privada(e, (p-1)*(q-1));
+        long long int cop = (p-1)*(q-1);
+        long long int d = chave_privada(e, cop);
         long long int frase_criptograda[10000], tamanho_frase = 0, new_frase_enumerada[10000];
         char nova_frase[10000];
         while (fscanf(crip, "%lld", &frase_criptograda[tamanho_frase]) != EOF)
@@ -246,13 +247,13 @@ void entrada_descriptografia()
 
 void entrada_numeros(long long int *num1, long long int *num2, long long int *phi) {
     long long int chavePublica = 0, chavePrivada; 
-    int  p,q,validadeP, validadeQ, validadeCoprimo, e;
+    long long int  p,q,validadeP, validadeQ, validadeCoprimo, e;
 
     printf("\nDigite dois numeros primos para a geracao da chave publica:");
     printf("\nP: ");
-    scanf("%d", &p);
+    scanf("%lld", &p);
     printf("\nQ: ");
-    scanf("%d", &q);
+    scanf("%lld", &q);
 
     validadeP = ehPrimo(p);
     validadeQ = ehPrimo(q);
@@ -261,23 +262,23 @@ void entrada_numeros(long long int *num1, long long int *num2, long long int *ph
         if (!validadeP && !validadeQ) {
             printf("\nDigite dois numeros primos para a geracao da chave publica:");
             printf("\nP: ");
-            scanf("%d", &p);
+            scanf("%lld", &p);
             printf("\nQ: ");
-            scanf("%d", &q);
+            scanf("%lld", &q);
 
             validadeP = ehPrimo(p);
             validadeQ = ehPrimo(q);
         } else if (!validadeP) {
             printf("\nO numero P nao eh um numero primo, digite-o novamente:");
             printf("\nP: ");
-            scanf("%i", &p);
+            scanf("%lld", &p);
 
             validadeP = ehPrimo(p);
         } else if (!validadeQ) {
             printf("\nO numero Q nao eh um numero primo, digite-o novamente:");
 
             printf("\nQ: ");
-            scanf("%i", &q);
+            scanf("%lld", &q);
 
             validadeQ = ehPrimo(q);
         } else {
@@ -288,9 +289,10 @@ void entrada_numeros(long long int *num1, long long int *num2, long long int *ph
     printf("\nDigite um numero Co-primo (numero E) de (P - 1)*(Q - 1): ");
 
     do {
-        scanf("%d", &e);
+        scanf("%lld", &e);
 
-        validadeCoprimo = mdc(mmc(p-1,q-1), e);
+        long long int cop = (p-1)*(q-1);
+        validadeCoprimo = mdc(cop, e);
 
         if (!validadeCoprimo) {
             printf("\nEste numero nao pode ser usado para gerar a chave publica, digite-o novamente:");

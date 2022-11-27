@@ -45,15 +45,27 @@ int mmc(int x, int y) {
 	return x*y/euclides(x,y);
 }
 
-long long int chave_privada(long long int e, long long int lambda)
-{
-    long long int i;
-    for( i = 0;;i++)
-    {
-      if((e*i)%lambda == 1) break;
-    }
-    //printf("chave privada: %d\n");
-    return i;
+int indice_d(long long int e, long long int phi){
+  long long int b_base = phi, q, t;
+  long long int x0 = 0, chave_privada = 1;
+
+  if(phi == 1) return 1;
+
+  while(e > 1){
+    q = e/phi;
+    t = phi;
+    phi = e%phi;
+    e = t;
+    t = x0;
+    x0 = chave_privada - (q*x0);
+    chave_privada = t;  
+  }
+
+  if(chave_privada <0)
+  {
+    chave_privada += b_base;
+  } 
+  return chave_privada;
 }
 
 bool ehPrimo (long long int p) {
@@ -231,7 +243,7 @@ void entrada_descriptografia()
 
         entrada_numeros(&p, &q, &e);
         long long int cop = (p-1)*(q-1);
-        long long int d = chave_privada(e, cop);
+        long long int d = indice_d(e, cop);
         long long int frase_criptograda[10000], tamanho_frase = 0, new_frase_enumerada[10000];
         char nova_frase[10000];
         while (fscanf(crip, "%lld", &frase_criptograda[tamanho_frase]) != EOF)

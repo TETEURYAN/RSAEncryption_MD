@@ -11,6 +11,7 @@ int numero_no_alfabeto[] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 
 
 void entrada();
 void entrada_numeros(long long int *num1, long long int *num2, long long int *phi);
+long potencia(long long a, long long e, long long n);
 
 bool mdc (long long int a, long long int b) {
     while (b != 0)
@@ -77,10 +78,10 @@ void criptografando_mensagem(long long int frase_enumerada[], int tamanho, long 
 {
     for(int i =0; i<tamanho-1; i++)
         {                           
-            long long int potencia_da_letra = pow(frase_enumerada[i],e); 
+            long long int potencia_da_letra = potencia(frase_enumerada[i],e,n); 
 			// printf("%lli\n", potencia_da_letra);
 
-            potencia_da_letra %= n;     
+            //potencia_da_letra %= n;     
             frase_criptograda[i]= potencia_da_letra;      
         }
 
@@ -92,9 +93,9 @@ void reenumerando_frase(long long int frase_criptografada[], int tamanho, long l
     int i;
     for(i =0; i<tamanho; i++)
         {                           
-            long long int potencia_da_letra = pow(frase_criptografada[i],d); 
+            long long int potencia_da_letra = potencia(frase_criptografada[i],d,n); 
 			//printf("%llu\n", potencia_da_letra);          
-            potencia_da_letra %= n;     
+            //potencia_da_letra %= n;     
             new_frase_enumerada[i]= potencia_da_letra;      
         }
 }
@@ -155,6 +156,33 @@ void decifrar(char letras[], int tabela[],  long long int new[], char novo_texto
         novo_texto[i] = letras[posicao];
     }
     decifrar(letras, tabela, new, novo_texto, n, i + 1);
+}
+
+long potencia(long long a, long long e, long long n)
+{
+
+    long long A = a, P = 1, E = e;
+
+    while (1)
+    {
+
+        if (E == 0)
+            return P;
+
+        else if (E % 2 != 0)
+        {
+
+            P = (A * P) % n;
+            E = (E - 1) / 2;
+        }
+
+        else
+        {
+            E = E / 2;
+        }
+
+        A = (A * A) % n;
+    }
 }
 
 void entrada_mensagem_descriptografada()

@@ -1,17 +1,25 @@
+bool ehPrimo (unsigned long long int p) {
 
-bool ehPrimo (unsigned long long  nTeste, unsigned long long  divisor) {
-    for (nTeste; divisor > 1; divisor -= 2){
-        if (nTeste == 2 || divisor == 1) {
-            return true;
-        } else if (nTeste % 2 == 0 || nTeste % divisor == 0) {
+    unsigned long long int i;
+    double j;
+    
+    if(p < 2)
+        return false;
+
+    j = sqrt(p);
+
+    for (i = 2; i <= j; i++) {
+        if (p % i == 0)
             return false;
-        }
     }
+
+    return true;
 }
 
 unsigned long long computandoChavePublica(unsigned long long p, unsigned long long q) {
     return  p * q;
 }
+
 
 bool mdc (unsigned long long a, unsigned long long b) {
     while (b != 0)

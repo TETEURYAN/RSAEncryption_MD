@@ -60,7 +60,7 @@ Integrantes:
 
 ### Exponenciação modular rápida
 ```c
-long long int exponenciacao_modular_rapida( long long int denominador,  long long int potencia,  long long int mod)
+int exponenciacao_modular_rapida( long long int denominador,  long long int potencia,  long long int mod)
 {
      long long int n = denominador;
      long long int k = potencia;

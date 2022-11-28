@@ -84,7 +84,7 @@ int exponenciacao_modular_rapida( long long int denominador,  long long int pote
 
 ### Reposicionar as os números descriptados em letras
 ```c
-void decifrar(char letras[], int tabela[],  unsigned long long int new[], char novo_texto[], unsigned long long int n, int i)
+void decifrar(char letras[], int tabela[], long long int new[], char novo_texto[], long long int n, int i)
 {
         while(i < n)
         { 

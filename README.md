@@ -18,7 +18,7 @@ Integrantes:
 * Possui como alicerce a aritmética modular, onde se buscam números primos eficazes para trazer segurança.
 
 <h2>Linguagem usada no projeto</h2>
-<p align="center"> <a href="https://www.cprogramming.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt="c" width="40" height="40"/> </a> </p>
+<a href="https://www.cprogramming.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt="c" width="40" height="40"/> </a> </p>
 
 ## Instalação do programa
 

@@ -303,7 +303,7 @@ void entrada_frase()
     {
         fscanf(keys, "p = %lld q = %lld e = %lld",&p,&q, &e);
         
-        char frase[500], aux[500];
+        char frase[10000], aux[10000];
         printf("Digite sua frase: ");
         scanf(" %[^\n]", frase);
         

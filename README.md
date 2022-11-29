@@ -17,6 +17,17 @@ Integrantes:
 * É bastante usada no ramo computacional na finalidade de obter serviços mais seguros.
 * Possui como alicerce a aritmética modular, onde se buscam números primos eficazes para trazer segurança.
 
+## Como funciona a criptografia RSA
+* Inserção de duas chaves públicas(p e q), que consequentemente geram uma chave privada(d)
+* As chaves públicas e provadas precisam se respeitar diante da primalidade e aritmética modular
+* Para criptografar, basta econtrar o resto do número desejado elevado ao expoente phi com o produto de p e q.
+* Pra descriptografar, basta econtrar o resto do número crifado elevado ao expoente d com o produto de p e q.
+
+```c
+criptografia: mensagem^e = crifrado mod (p*q)
+descriptografia: cifrado^d = mensagem mod (p*q)
+```	
+	
 <h2>Linguagem usada no projeto</h2>
 <a href="https://www.cprogramming.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt="c" width="40" height="40"/> </a> </p>
 
@@ -94,5 +105,15 @@ void decifrar(char letras[], int tabela[], long long int new[], char novo_texto[
 	    }
 }
 ```
+## Erros durante a criação do programa
+
+* Encerramento precoce ao digitar string no espaço dedicado a inteiro
+* Impressão de lixo quando não era possível encontrar letras
+* Erros de conversão na exponenciação modular rápida
+* Limitação da linguagem C no suporte de números grandes
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/91018438/204663649-24e7168c-3eb6-4589-9bcb-10bfa45e1b82.png" alt="animated" />
+</p>
 
 # Obrigado pela atenção!

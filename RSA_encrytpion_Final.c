@@ -378,7 +378,7 @@ void entrada()
 
         if(opcao == 1)
         {
-            system("cla");
+            system("cls");
             FILE *keys;
             keys = fopen("chaves.txt", "w");
 
@@ -408,14 +408,12 @@ void entrada()
         else if( opcao == 5)
         {
             printf("Obrigado por usar!");
-            Sleep(1000);
             exit(0);
             return;
         }
         else
         {
             printf("Escolha uma opcao valida!");
-            Sleep(1000);
             getchar();
         }
     }

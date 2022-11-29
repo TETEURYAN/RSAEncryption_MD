@@ -1,37 +1,60 @@
+void criptografando_mensagem(unsigned long long int frase_enumerada[], int tamanho, unsigned long long int frase_criptograda[], int e, int n)
+{
+    for(int i =0; i<tamanho-1; i++)
+        {                           
+            unsigned long long int potencia_da_letra = exponenciacao_modular_rapida(frase_enumerada[i],e,n); 
+            frase_criptograda[i]= potencia_da_letra;      
+        }
 
-int printar_crptografia(lli array[], lli array_original[], int i, int tam){
-    if(i == tam) return 0;
-    if(array_original[i] == 28) printf(" ");
-    printf("%llu",array[i]);
-    printar_crptografia(array,array_original, i+1, tam);
+        return;
 }
 
-int printar_sequencia_enumerada(lli array[], char frase[], int i, int tam){
-    if(i == tam) return 0;
-    if(array[i] == 28) printf(" ");
-    printf("%llu",array[i]);
-    printar_sequencia_enumerada(array,frase, i+1, tam);
+void reenumerando_frase(unsigned long long int frase_criptografada[], int tamanho, unsigned long long int new_frase_enumerada[], unsigned long long int e, unsigned long long int d, unsigned long long int n)
+{
+    int i;
+    for(i = 0; i < tamanho; i++)
+        {                           
+            unsigned long long int potencia_da_letra = exponenciacao_modular_rapida(frase_criptografada[i],d,n);    
+            new_frase_enumerada[i]= potencia_da_letra;      
+        }
+}
+
+int letra_na_tabela(int tabela[], long long new[], unsigned long long int n, int j, int i)
+{
+    for (; j < 28; j++) {
+        if (new[i] == tabela[j]) return j;
+    }
 }
 
 int numero_na_tabela(char letras[], char frase[], int tam, int j, int i)
 {
-    if (frase[i] == letras[j]) return j;
-    else
-    {
-        j++;
-        return numero_na_tabela(letras, frase, tam, j, i);
+    for (; j < 28; j++) {
+        if (frase[i] == letras[j]) return j;
     }
-    return numero_na_tabela(letras, frase, tam, j, i);
 }
 
-void enumerar(char letras[], int tabela[], char frase[], lli new_frase[], int n, int i)
-{
-    if (i < n)
-    {
-        int pos;
+void enumerar(char letras[], int tabela[], char frase[], unsigned long long int new_frase[], int n, int i)
+{   
+    int pos;
+    for (; i < n; i++) {
         pos = numero_na_tabela(letras, frase, n, 0, i);
         new_frase[i] = tabela[pos];
-        enumerar(letras, tabela, frase, new_frase, n, i + 1);
     }
-    return;
+}
+
+void decifrar(char letras[], int tabela[],  unsigned long long int new[], char novo_texto[], unsigned long long int n, int i)
+{
+        while(i < n)
+        { 
+            if(new[i] != 28)  novo_texto[i] = new[i] + ('A' - 2);
+            else if(new[i] == 28) novo_texto[i] = ' ';
+            i++;
+	    }
+
+        novo_texto[i] = '\0';
+        FILE *new_text;
+        new_text = fopen("descriptado.txt", "w");
+        fprintf(new_text, "%s", novo_texto);
+        fclose(new_text);
+        return;
 }

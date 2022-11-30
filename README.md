@@ -11,12 +11,25 @@ Integrantes:
     Matheus Ryan | Caio César | Thyago Vianna | João Gomes | Matheus Silva
  </center>
   
+  
 
 ## O que é a criptografia RSA?
 * A criptografia RSA consiste em uma forma de criptografar números com base na artimética modular.
 * É bastante usada no ramo computacional na finalidade de obter serviços mais seguros.
 * Possui como alicerce a aritmética modular, onde se buscam números primos eficazes para trazer segurança.
 
+## Como funciona a criptografia RSA
+* Inserção de duas chaves públicas(p e q), que consequentemente geram uma chave privada(d)
+* As chaves públicas e provadas precisam se respeitar diante da primalidade e aritmética modular
+* Para criptografar, basta econtrar o resto do número desejado elevado ao expoente phi com o produto de p e q.
+* Pra descriptografar, basta econtrar o resto do número crifado elevado ao expoente d com o produto de p e q.
+
+```c
+criptografia: mensagem^e = crifrado mod (p*q)
+
+descriptografia: cifrado^d = mensagem mod (p*q)
+```	
+	
 <h2>Linguagem usada no projeto</h2>
 <a href="https://www.cprogramming.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt="c" width="40" height="40"/> </a> </p>
 
@@ -94,5 +107,21 @@ void decifrar(char letras[], int tabela[], long long int new[], char novo_texto[
 	    }
 }
 ```
+### Arrays para números e letras de acordo com a numeração dada
+
+```c
+char letras[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' '};
+int numero_no_alfabeto[] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28};
+```
+## Erros durante a criação do programa
+
+* Encerramento precoce ao digitar string no espaço dedicado a inteiro
+* Impressão de lixo quando não era possível encontrar letras
+* Erros de conversão na exponenciação modular rápida
+* Limitação da linguagem C no suporte de números grandes
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/91018438/204663649-24e7168c-3eb6-4589-9bcb-10bfa45e1b82.png" alt="animated" />
+</p>
 
 # Obrigado pela atenção!

@@ -28,6 +28,7 @@ Integrantes:
 criptografia: mensagem^e = crifrado mod (p*q)
 
 descriptografia: cifrado^d = mensagem mod (p*q)
+
 ```		
 <h2>Linguagem usada no projeto</h2>
 <a href="https://www.cprogramming.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt="c" width="40" height="40"/> </a> </p>
@@ -50,7 +51,7 @@ descriptografia: cifrado^d = mensagem mod (p*q)
 > ```
 > 	gcc RSA_encritpion_Final.c -o exe -lm
 > ```
-> 	Logo depois
+> 	Logo depois, basta executar com o seguinte comando:
 > ```
 >         ./exe
   </p>
